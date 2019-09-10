@@ -17,7 +17,7 @@ export class PrescriptionComponent implements OnInit {
  selectedPrintOpt:boolean;
   constructor(private svc:CrmService){
     this.patientId = [
-      {label: '123', value: '123'},
+      {label: '1235', value: '123'},
       {label: '12356', value: '1235'},
       {label: '5321', value: '6795'},
       {label: '2345', value: '5673'}
