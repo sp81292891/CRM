@@ -1,0 +1,228 @@
+<section>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+            <span class="label">Counter Numer : </span> <input type="text" pInputText />
+        </div>
+        <div class="col-sm-3">
+            <span class="label">Bill Numer : </span> <p-dropdown [options]="billNum"></p-dropdown>
+        </div>
+        <div class="col-sm-3">
+            <span class="label">Bill Date : </span> <input type="text" [(ngModel)]="billDate" pInputText disabled/>
+        </div>
+        <div class="col-sm-3">
+                <span class="label">Time : </span> <input type="text" pInputText [(ngModel)]="billTime" disabled/>
+        </div>
+    </div>
+</div>
+</section>
+<hr/>
+<section>
+   
+        <div class="container-fluid">
+            <div class="row">
+                <div class="container col-sm-6">
+                   
+                        <h2>Patients Details</h2>
+                        <hr/>
+                        <div class="col-sm-12 patient-details-div">
+                            <span class="label">Patient Id : </span>
+                            <p-dropdown [options]="patientId"></p-dropdown>
+                            <p-button label="Patient History"></p-button>
+                            <p-button label="LRx"></p-button>
+                        </div>
+                        <div class="col-sm-12 patient-details-div">
+                            <span class="label">Patient Name : </span>
+                            <input type="text" pInputText [(ngModel)]="patientName"/>
+                        </div>
+                        <div class="col-sm-12 patient-details-div">
+                                <span class="label">Age: </span>
+                                <input type="text" pInputText />
+                        </div>
+                        <div class="col-sm-12 patient-details-div">
+                                <span class="label">Gender : </span>
+                                <p-radioButton name="gender" value="Male" [(ngModel)]="selectedGender" label="Male"></p-radioButton>
+                                <p-radioButton name="gender" value="Female" [(ngModel)]="selectedGender" label="Female"></p-radioButton>
+                        </div>
+                        <div class="col-sm-12 patient-details-div">
+                                <span class="label">Address : </span>
+                                <input type="text" pInputText/>
+                        </div>
+                        <div class="col-sm-12 patient-details-div">
+                                <span class="label">Patient Day Total : </span>
+                                <input type="number" pInputText />
+                        </div>
+                       
+                </div>
+                <div class="container col-sm-6">
+                   
+                        <h2>Tax Type : VAT</h2>
+                        <hr/>
+                        <div class="col-sm-12 patient-details-div">
+                            <span class="label">Doctor : </span>
+                            <p-dropdown [options]="doctorNames"></p-dropdown>
+                            <input type="text" pInputText/>
+                            <input type="text" pInputText/>
+                        </div>
+                        <div class="col-sm-12 patient-details-div">
+                                
+                                <p-radioButton name="trans" value="Cash" [(ngModel)]="selectedTransaction" label="Cash"></p-radioButton>
+                                <p-radioButton name="trans" value="Credit" [(ngModel)]="selectedTransaction" label="Credit"></p-radioButton>
+
+                                <p-checkbox [(ngModel)]="value" binary="true"  label="Shoe on Startup"></p-checkbox>
+                        </div>
+                        <div class="col-sm-12 patient-details-div">
+                            <div>Employee Details</div>
+                            <div>No</div>
+                            <input type="text" pInputText/>
+                            <p-button label="Prescription" (click)="showPrescription()"></p-button>
+                        </div>
+                </div>
+            
+
+            </div>
+        </div>
+   
+</section>
+<section>
+    <div class="container-fluid">
+        <div class="row">
+                <div class="col-sm-3">
+                        <span class="label">Customer Code : </span> <p-dropdown [options]="billNum"></p-dropdown>
+                    </div>
+                    <div class="col-sm-3">
+                        <div>Cash in Hand - Main Cash </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <span class="label">Customer Class : </span> <p-dropdown [options]="billNum"></p-dropdown>
+                    </div>
+                    <div class="col-sm-3">
+                            <input type="text" pInputText />
+                    </div>
+        </div>
+        <hr/>
+        <div class="row">
+                <p-table [value]="prescriptionList"  [responsive]="true" [paginator]="true" [rows]="4">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                    <th>No</th>
+                                    <th>ItemCode</th>
+                                    <th>Description</th>
+                                    <th>Unit</th>
+                                    <th>BatchNum</th>
+                                    <th>ExpDate</th>
+                                    <th>Qty</th>
+                                    <th>Lz Qty</th>
+                                    <th>Price</th>
+                                    <th>Disc</th>
+                                    <th>Disc Amnt</th>
+                                    <th>Amount</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-pre>
+                            <tr>
+                                    <td>{{pre.no}}</td>
+                                    <td>{{pre.itemCode}}</td>
+                                    <td>{{pre.description}}</td>
+                                    <td>{{pre.unit}}</td>
+                                    <td>{{pre.batchNum}}</td>
+                                    <td>{{pre.expDate}}</td>
+                                    <td>{{pre.qty}}</td>
+                                    <td>{{pre.lzqty}}</td>
+                                    <td>{{pre.price}}</td>
+                                    <td>{{pre.disc}} % </td>
+                                    <td>{{pre.discAmnt}}</td>
+                                    <td>{{pre.amount}}</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+        </div>
+
+    </div>
+    <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-4">
+                  <div>Stock : 6</div>
+                  <div>
+                      Remarks:
+                      <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize"></textarea>
+                  </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="col-sm-12">
+                        <div class="col-sm-3">
+                            <span class="label">Disc % : </span> <input type="text" pInputText />
+                        </div>
+                        <div class="col-sm-3">
+                                <span class="label">Gross : </span> <input type="text" pInputText />
+                        </div>
+                        <div class="col-sm-3">
+                                <span class="label">Total : </span> <input type="text" pInputText />
+                        </div>
+                        <div class="col-sm-3">
+                                <span class="label">Net Tax : </span> <input type="text" pInputText />
+                        </div>
+                        <div class="col-sm-3">
+                                <span class="label">Discount : </span> <input type="text" pInputText />
+                            </div>
+                            <div class="col-sm-3">
+                                    <span class="label">Paid : </span> <input type="text" pInputText />
+                            </div>
+                            <div class="col-sm-3">
+                                    <span class="label">Net : </span> <input type="text" pInputText />
+                            </div>
+                            <div class="col-sm-3">
+                                    <span class="label">Net Foc Tax : </span> <input type="text" pInputText />
+                            </div>
+                            <div class="col-sm-3">
+                               
+                            </div>
+                            <div class="col-sm-3">
+                                    <span class="label">Net Cash : </span> <input type="text" pInputText />
+                            </div>
+                            <div class="col-sm-3">
+                                    <span class="label">Balance : </span> <input type="text" pInputText />
+                            </div>
+                            <div class="col-sm-3">
+                                    <span class="label">Net (Incl. Tax) : </span> <input type="text" pInputText />
+                            </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</section>
+<section>
+    <h2>Payment Details</h2>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-8"></div>
+            <div class="col-sm-4">
+                <h3>Cash Details</h3>
+                <hr/>
+                <div class="col-sm-12">
+                        <div class="col-sm-4">
+                                <span class="label">Net Amount : </span> <input type="text" pInputText />
+                        </div>
+                        <div class="col-sm-4">
+                                <span class="label">Amount Paid : </span> <input type="text" pInputText />
+                        </div>
+                        <div class="col-sm-4">
+                                <span class="label">Balance Payable : </span> <input type="text" pInputText />
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+        <div class="container-fluid">
+                <div class="row">
+                    <button pButton type="button" label="Save" class="ui-button-raised ui-button-success"></button>
+                    <button pButton type="button" label="Cancel" class="ui-button-raised ui-button-danger"></button>
+                    <button pButton type="button" label="Print" class="ui-button-raised"></button>
+                </div>
+        </div>
+</section>
+
+<app-prescription *ngIf="isPrescription" [displayPrescription]="isPrescription" (HidePrescription)="isPrescription=false"></app-prescription>
+

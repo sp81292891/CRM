@@ -1,0 +1,90 @@
+<p-dialog header="Title" [(visible)]="displayPrescription" (onHide)="Cancel()">
+        <p-header>
+                Header content here
+            </p-header>
+            <section>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <span class="label">Patient Id : </span> <p-dropdown [options]="patientId"></p-dropdown>
+                            </div>
+                            <div class="col-sm-3">
+                                    <input type="text" pInputText/>
+                            </div>
+                            <div class="col-sm-3">
+                                <span class="label">Period From : </span>  <p-calendar [(ngModel)]="frmdate"></p-calendar>
+                            </div>
+                            <div class="col-sm-3">
+                                <span class="label">Time : </span> <p-calendar [(ngModel)]="todate"></p-calendar>
+                            </div>
+                            <p-checkbox [(ngModel)]="value" binary="true"  label="Show Pending Quality "></p-checkbox>
+                            <button type="button" pButton icon="pi pi-check"  label="Refresh"></button>
+               
+                        </div>
+                    </div>
+                    </section>
+                    <div class="row">
+                            <p-table [value]="pDetails"  [responsive]="true" [paginator]="true" [rows]="4">
+                                    <ng-template pTemplate="header">
+                                        <tr>
+                                                <th>PatientId</th>
+                                                <th>Name</th>
+                                                <th>IP No</th>
+                                                <th>Bed Name</th>
+                                                <th>Nursing Station</th>
+                                               
+                                        </tr>
+                                    </ng-template>
+                                    <ng-template pTemplate="body" let-pre>
+                                        <tr>
+                                                <td>{{pre.paientId}}</td>
+                                                <td>{{pre.name}}</td>
+                                                <td>{{pre.ipNum}}</td>
+                                                <td>{{pre.bedname}}</td>
+                                                <td>{{pre.nursingstation}}</td>
+                                         </tr>
+                                    </ng-template>
+                                </p-table>
+                    </div>  
+                    <div class="row">
+                        <p-table [value]="pDetails"  [responsive]="true" [paginator]="true" [rows]="4">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                            <th style="width: 3em">
+                                                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                                                </th>
+                                            <th>PatientId</th>
+                                            <th>Name</th>
+                                            <th>IP No</th>
+                                            <th>Bed Name</th>
+                                            <th>Nursing Station</th>
+                                           
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-pre>
+                                    <tr [pSelectableRow]="rowData">
+                                        <td>
+                                            <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+                                        </td>
+                                            <td>{{pre.paientId}}</td>
+                                            <td>{{pre.name}}</td>
+                                            <td>{{pre.ipNum}}</td>
+                                            <td>{{pre.bedname}}</td>
+                                            <td>{{pre.nursingstation}}</td>
+                                     </tr>
+                                </ng-template>
+                            </p-table>
+                </div> 
+                <div class="col-sm-12">
+                                
+                        <p-radioButton name="print" value="PrintAll" [(ngModel)]="selectedPrintOpt" label="Print All"></p-radioButton>
+                        <p-radioButton name="trans" value="PrintUnavailable" [(ngModel)]="selectedPrintOpt" label="Print Unavailable"></p-radioButton>
+
+                        <p-checkbox [(ngModel)]="value" binary="true"  label="Shoe on Startup"></p-checkbox>
+                        <button type="button" pButton icon="pi pi-print" label="Print"></button>
+                </div> 
+            <p-footer>
+                <button type="button" pButton icon="pi pi-check" (click)="Submit()" label="Ok"></button>
+                <button type="button" pButton icon="pi pi-close" (click)="Cancel()" label="Cancel" class="ui-button-secondary"></button>
+            </p-footer>
+</p-dialog>
