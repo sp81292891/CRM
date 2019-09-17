@@ -11,6 +11,7 @@ price:string;
 disc:string;
 discAmnt:string;
 amount:string;
+paientId:string;
 }
 
 export class PatientDetails{
@@ -19,4 +20,32 @@ export class PatientDetails{
     ipNum:string;
     bedname:string;
     nursingstation:string;
+}
+
+export class PatientDetailsById{
+    paientId:string;
+    name:string;
+    Age:string;
+    Gender:string;
+    Adress:string;
+    PatientDayTotal:string;
+    Customercode:string;
+    DoctorName:string;
+    Modeofpayment:string;
+    CustomerClass:string;
+}
+
+export class PrescriptionDetails{
+    paientId:string;
+    date:string;
+    itemCode:string;
+    itemName:string;
+    dosage:string;
+    duration:string;
+    balance:string;
+    Duration:string;
+    Balance:string;
+    Remarks:string;
+    consid:string;
+    patid:string;
 }

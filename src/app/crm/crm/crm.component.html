@@ -27,30 +27,30 @@
                         <hr/>
                         <div class="col-sm-12 patient-details-div">
                             <span class="label">Patient Id : </span>
-                            <p-dropdown [options]="patientId"></p-dropdown>
+                            <p-dropdown [options]="patientId" [(ngModel)]="selectedPatientId" (onChange)="onChangePatient()"></p-dropdown>
                             <p-button label="Patient History"></p-button>
                             <p-button label="LRx"></p-button>
                         </div>
                         <div class="col-sm-12 patient-details-div">
                             <span class="label">Patient Name : </span>
-                            <input type="text" pInputText [(ngModel)]="patientName"/>
+                            <input type="text" pInputText [(ngModel)]="patientDetailsById.name"/>
                         </div>
                         <div class="col-sm-12 patient-details-div">
                                 <span class="label">Age: </span>
-                                <input type="text" pInputText />
+                                <input type="text" pInputText [(ngModel)]="patientDetailsById.Age"/>
                         </div>
                         <div class="col-sm-12 patient-details-div">
                                 <span class="label">Gender : </span>
-                                <p-radioButton name="gender" value="Male" [(ngModel)]="selectedGender" label="Male"></p-radioButton>
-                                <p-radioButton name="gender" value="Female" [(ngModel)]="selectedGender" label="Female"></p-radioButton>
+                                <p-radioButton name="gender" value="Male" [(ngModel)]="patientDetailsById.Gender" label="Male"></p-radioButton>
+                                <p-radioButton name="gender" value="Female" [(ngModel)]="patientDetailsById.Gender" label="Female"></p-radioButton>
                         </div>
                         <div class="col-sm-12 patient-details-div">
                                 <span class="label">Address : </span>
-                                <input type="text" pInputText/>
+                                <input type="text" pInputText [(ngModel)]="patientDetailsById.Adress"/>
                         </div>
                         <div class="col-sm-12 patient-details-div">
                                 <span class="label">Patient Day Total : </span>
-                                <input type="number" pInputText />
+                                <input type="number" pInputText [(ngModel)]="patientDetailsById.PatientDayTotal"/>
                         </div>
                        
                 </div>
@@ -60,14 +60,14 @@
                         <hr/>
                         <div class="col-sm-12 patient-details-div">
                             <span class="label">Doctor : </span>
-                            <p-dropdown [options]="doctorNames"></p-dropdown>
+                            <input type="text" pInputText [(ngModel)]="patientDetailsById.DoctorName"/>
                             <input type="text" pInputText/>
                             <input type="text" pInputText/>
                         </div>
                         <div class="col-sm-12 patient-details-div">
                                 
-                                <p-radioButton name="trans" value="Cash" [(ngModel)]="selectedTransaction" label="Cash"></p-radioButton>
-                                <p-radioButton name="trans" value="Credit" [(ngModel)]="selectedTransaction" label="Credit"></p-radioButton>
+                                <p-radioButton name="trans" value="Cash" [(ngModel)]="patientDetailsById.Modeofpayment" label="Cash"></p-radioButton>
+                                <p-radioButton name="trans" value="Credit" [(ngModel)]="patientDetailsById.Modeofpayment" label="Credit"></p-radioButton>
 
                                 <p-checkbox [(ngModel)]="value" binary="true"  label="Shoe on Startup"></p-checkbox>
                         </div>
@@ -88,13 +88,13 @@
     <div class="container-fluid">
         <div class="row">
                 <div class="col-sm-3">
-                        <span class="label">Customer Code : </span> <p-dropdown [options]="billNum"></p-dropdown>
+                        <span class="label">Customer Code : </span> <p-dropdown [options]="CustomerCode" [(ngModel)]="patientDetailsById.Customercode"></p-dropdown>
                     </div>
                     <div class="col-sm-3">
                         <div>Cash in Hand - Main Cash </div>
                     </div>
                     <div class="col-sm-3">
-                        <span class="label">Customer Class : </span> <p-dropdown [options]="billNum"></p-dropdown>
+                        <span class="label">Customer Class : </span> <p-dropdown [options]="custClass" [(ngModel)]="patientDetailsById.CustomerClass"></p-dropdown>
                     </div>
                     <div class="col-sm-3">
                             <input type="text" pInputText />
@@ -154,13 +154,13 @@
                             <span class="label">Disc % : </span> <input type="text" pInputText />
                         </div>
                         <div class="col-sm-3">
-                                <span class="label">Gross : </span> <input type="text" pInputText />
+                                <span class="label">Gross : </span> <input type="text" pInputText pInputText [(ngModel)]="grossamount"/>
                         </div>
                         <div class="col-sm-3">
-                                <span class="label">Total : </span> <input type="text" pInputText />
+                                <span class="label">Total : </span> <input type="text" pInputText [(ngModel)]="TotalAmount"/>
                         </div>
                         <div class="col-sm-3">
-                                <span class="label">Net Tax : </span> <input type="text" pInputText />
+                                <span class="label">Net Tax : </span> <input type="text" pInputText [ngModel]="tax" (ngModelChange)="CalTax($event)"/>
                         </div>
                         <div class="col-sm-3">
                                 <span class="label">Discount : </span> <input type="text" pInputText />
@@ -169,7 +169,7 @@
                                     <span class="label">Paid : </span> <input type="text" pInputText />
                             </div>
                             <div class="col-sm-3">
-                                    <span class="label">Net : </span> <input type="text" pInputText />
+                                    <span class="label">Net : </span> <input type="text" pInputText pInputText [(ngModel)]="TotalAmount"/>
                             </div>
                             <div class="col-sm-3">
                                     <span class="label">Net Foc Tax : </span> <input type="text" pInputText />
@@ -201,7 +201,7 @@
                 <hr/>
                 <div class="col-sm-12">
                         <div class="col-sm-4">
-                                <span class="label">Net Amount : </span> <input type="text" pInputText />
+                                <span class="label">Net Amount : </span> <input type="text" pInputText [(ngModel)]="TotalAmount"/>
                         </div>
                         <div class="col-sm-4">
                                 <span class="label">Amount Paid : </span> <input type="text" pInputText />
@@ -224,5 +224,5 @@
         </div>
 </section>
 
-<app-prescription *ngIf="isPrescription" [displayPrescription]="isPrescription" (HidePrescription)="isPrescription=false"></app-prescription>
+<app-prescription *ngIf="isPrescription" [displayPrescription]="isPrescription" [id]="selectedPatientId" (HidePrescription)="isPrescription=false"></app-prescription>
 

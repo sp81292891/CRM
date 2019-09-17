@@ -2,11 +2,11 @@
     Period
     <div class="ui-g-12 ui-md-4">
         from
-        <p-calendar [(ngModel)]="frmDate"></p-calendar>
+        <p-calendar [(ngModel)]="frmDate" (onSelect)="onSelectDate()"></p-calendar>
     </div>
     <div class="ui-g-12 ui-md-4">
         To
-        <p-calendar [(ngModel)]="tdate"></p-calendar>
+        <p-calendar [(ngModel)]="tdate" (onSelect)="onSelectDate()"></p-calendar>
     </div>
 </div>
 <div>
@@ -54,13 +54,13 @@
 <div>
     Sales Ananlysys
     <button pButton type="button" label="Print Preview" class="ui-button-raised"></button>
-<button pButton type="button" label="Export" class="ui-button-raised"></button>
+<button pButton type="button" label="Export" class="ui-button-raised" ></button>
 <button pButton type="button" label="Option" class="ui-button-raised "></button>
 <button pButton type="button" label="Filter" class="ui-button-raised"></button>
 <button pButton type="button" label="Formula" class="ui-button-raised"></button>
 <button pButton type="button" label="Close" class="ui-button-raised"></button>
     <div class="row">
-            <p-table [value]="analysysList"  [responsive]="true" >
+            <p-table [value]="analysysList"  [responsive]="true" #dt>
                     <ng-template pTemplate="header">
                         <tr>
                                 <th>Store</th>

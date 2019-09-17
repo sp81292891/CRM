@@ -6,16 +6,16 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-sm-3">
-                                <span class="label">Patient Id : </span> <p-dropdown [options]="patientId"></p-dropdown>
+                                <span class="label">Patient Id : </span> <p-dropdown [options]="patientId" [(ngModel)]="id"></p-dropdown>
                             </div>
                             <div class="col-sm-3">
                                     <input type="text" pInputText/>
                             </div>
                             <div class="col-sm-3">
-                                <span class="label">Period From : </span>  <p-calendar [(ngModel)]="frmdate"></p-calendar>
+                                <span class="label">Period From : </span>  <p-calendar [(ngModel)]="frmdate" (onSelect)="onSelectDate()"></p-calendar>
                             </div>
                             <div class="col-sm-3">
-                                <span class="label">Time : </span> <p-calendar [(ngModel)]="todate"></p-calendar>
+                                <span class="label">Time : </span> <p-calendar [(ngModel)]="todate" (onSelect)="onSelectDate()"></p-calendar>
                             </div>
                             <p-checkbox [(ngModel)]="value" binary="true"  label="Show Pending Quality "></p-checkbox>
                             <button type="button" pButton icon="pi pi-check"  label="Refresh"></button>
@@ -47,18 +47,21 @@
                                 </p-table>
                     </div>  
                     <div class="row">
-                        <p-table [value]="pDetails"  [responsive]="true" [paginator]="true" [rows]="4">
+                        <p-table [value]="prescriptionDetails"  [responsive]="true" [paginator]="true" [rows]="4">
                                 <ng-template pTemplate="header">
                                     <tr>
                                             <th style="width: 3em">
                                                     <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                                                 </th>
-                                            <th>PatientId</th>
-                                            <th>Name</th>
-                                            <th>IP No</th>
-                                            <th>Bed Name</th>
-                                            <th>Nursing Station</th>
-                                           
+                                                <th>Date</th>
+                                            <th>Item Code</th>
+                                            <th>Item Name</th>
+                                            <th>Dosage</th>
+                                            <th>Duration</th>
+                                            <th>Balance</th>
+                                            <th>Remarks</th>
+                                            <th>ConsID</th>
+                                            <th>PatID</th>
                                     </tr>
                                 </ng-template>
                                 <ng-template pTemplate="body" let-pre>
@@ -66,11 +69,15 @@
                                         <td>
                                             <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
                                         </td>
-                                            <td>{{pre.paientId}}</td>
-                                            <td>{{pre.name}}</td>
-                                            <td>{{pre.ipNum}}</td>
-                                            <td>{{pre.bedname}}</td>
-                                            <td>{{pre.nursingstation}}</td>
+                                        <td>{{pre.date}}</td>
+                                            <td>{{pre.itemCode}}</td>
+                                            <td>{{pre.itemName}}</td>
+                                            <td>{{pre.dosage}}</td>
+                                            <td>{{pre.duration}}</td>
+                                            <td>{{pre.balance}}</td>
+                                            <td>{{pre.Remarks}}</td>
+                                            <td>{{pre.consid}}</td>
+                                            <td>{{pre.patid}}</td>
                                      </tr>
                                 </ng-template>
                             </p-table>

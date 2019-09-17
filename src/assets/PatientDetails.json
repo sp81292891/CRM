@@ -1,0 +1,49 @@
+[{
+    "paientId":"123",
+    "name":"Joen Doe",
+    "Age":"20",
+    "Gender":"Male",
+    "Adress":"P0530",
+    "PatientDayTotal":"5",
+    "Customercode":"6",
+    "DoctorName":"Tonny",
+    "Modeofpayment":"Cash",
+    "CustomerClass":"15"
+    },
+    {
+        "paientId":"12356",
+    "name":"Ave Mary",
+    "Age":"22",
+    "Gender":"Female",
+    "Adress":"P0530",
+    "PatientDayTotal":"1",
+    "Customercode":"4",
+    "DoctorName":"Mose",
+    "Modeofpayment":"Credit",
+    "CustomerClass":"12"
+    },
+    {
+        "paientId":"2345",
+        "name":"Jason",
+        "Age":"25",
+        "Gender":"Male",
+        "Adress":"P0530",
+        "PatientDayTotal":"2",
+        "Customercode":"3",
+        "DoctorName":"Statham",
+        "Modeofpayment":"Credit",
+        "CustomerClass":"13"
+    },
+    {
+        "paientId":"5321",
+    "name":"Peter",
+    "Age":"90",
+    "Gender":"Male",
+    "Adress":"P0530",
+    "PatientDayTotal":"4",
+    "Customercode":"1",
+    "DoctorName":"Parker",
+    "Modeofpayment":"Cash",
+    "CustomerClass":"12"
+    }]
+
