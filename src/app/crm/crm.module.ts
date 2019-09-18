@@ -13,6 +13,7 @@ import {TableModule} from 'primeng/table';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import { PrescriptionComponent } from './prescription/prescription.component';
 import {DialogModule} from 'primeng/dialog';
+import {AutoCompleteModule} from 'primeng/autocomplete';
 @NgModule({
   declarations: [CrmComponent, PrescriptionComponent],
   imports: [
@@ -27,7 +28,8 @@ import {DialogModule} from 'primeng/dialog';
     ButtonModule,
     TableModule,
     InputTextareaModule,
-    DialogModule
+    DialogModule,
+    AutoCompleteModule
   ]
 })
 export class CRMModule { }

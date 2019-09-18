@@ -16,7 +16,8 @@ export class CrmComponent implements OnInit {
  billDate:string=moment().format("DD/MM/YYYY");
  billTime:string=moment().format("HH:mm");
  patientName:string="John Doe";
- patientId:SelectItem[];
+ patientId:any;
+ patientIds:string[];
  selectedGender:string="Male";
  doctorNames:SelectItem[];
  selectedTransaction:string="Cash";
@@ -34,12 +35,7 @@ export class CrmComponent implements OnInit {
       {label: '5321', value: '5321'},
       {label: '2345', value: '2345'}
   ];
-  this.patientId = [
-    {label: '123', value: '123'},
-    {label: '12356', value: '12356'},
-    {label: '5321', value: '5321'},
-    {label: '2345', value: '2345'}
-];
+  this.patientIds = ['123' ,'12356', '5321','2345'];
 this.doctorNames = [
   {label: 'Dr. Tony Stark', value: '123'},
   {label: 'Dr. Ram Madhav', value: '1235'},
@@ -101,6 +97,11 @@ this.CustomerCode= [
     if(!isNaN(val))
     this.TotalAmount=+(this.grossamount+(+(val/100).toFixed(2))).toFixed(2)
     
+  }
+  getPIds(event:any){
+if(!isNaN(event.query)){
+  this.patientId=this.patientIds.filter(a=>a.includes(event.query))
+}
   }
 }
 

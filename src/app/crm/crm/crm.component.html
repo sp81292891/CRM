@@ -47,7 +47,13 @@
                           <div class="form-group row">
                             <span class="label control-label col-sm-3">Patient Id </span>
                             <div class="col-sm-4">
-                              <p-dropdown [options]="patientId" [(ngModel)]="selectedPatientId" (onChange)="onChangePatient()"></p-dropdown>
+                               <p-autoComplete [(ngModel)]="selectedPatientId" [suggestions]="patientId" (completeMethod)="getPIds($event)" (onSelect)="onChangePatient()">
+                                <ng-template let-brand pTemplate="item">
+                                  <div class="ui-helper-clearfix" >
+                                    {{brand}}
+                                      </div>
+                              </ng-template>
+                               </p-autoComplete>
                             </div>
                             <div class="col-sm-5">
                               <p-button label="Patient History"></p-button>
